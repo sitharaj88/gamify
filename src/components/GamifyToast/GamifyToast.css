@@ -1,0 +1,81 @@
+.gamify-toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.gamify-toast {
+    pointer-events: auto;
+    min-width: 300px;
+    background: var(--gamify-bg-panel);
+    border-left: 4px solid var(--gamify-neon-yellow);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    animation: slideInRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gamify-toast::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--gamify-neon-yellow);
+    width: 100%;
+    animation: progress linear forwards;
+}
+
+.gamify-toast__icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 5px var(--gamify-neon-yellow));
+}
+
+.gamify-toast__content {
+    flex: 1;
+}
+
+.gamify-toast__title {
+    font-family: var(--gamify-font-heading);
+    font-size: 1rem;
+    color: var(--gamify-neon-yellow);
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
+.gamify-toast__message {
+    font-family: var(--gamify-font-body);
+    font-size: 0.9rem;
+    color: white;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}

@@ -1,0 +1,95 @@
+.gamify-quest-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.gamify-quest-item {
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 3px solid var(--gamify-text-muted);
+    padding: 0.8rem;
+    transition: var(--gamify-transition);
+    cursor: pointer;
+}
+
+.gamify-quest-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.gamify-quest-item--completed {
+    border-left-color: var(--gamify-neon-green);
+    opacity: 0.7;
+}
+
+.gamify-quest-item--active {
+    border-left-color: var(--gamify-neon-yellow);
+    background: linear-gradient(90deg, rgba(250, 255, 0, 0.1), transparent);
+}
+
+.gamify-quest-item--failed {
+    border-left-color: var(--gamify-neon-pink);
+}
+
+.gamify-quest-item__title {
+    font-family: var(--gamify-font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--gamify-text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gamify-quest-item__desc {
+    font-family: var(--gamify-font-body);
+    font-size: 0.9rem;
+    color: var(--gamify-text-secondary);
+    margin-top: 0.25rem;
+}
+
+.gamify-quest-item__rewards {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-quest-log {
+        gap: 0.6rem;
+    }
+
+    .gamify-quest-item {
+        padding: 0.6rem;
+    }
+
+    .gamify-quest-item__title {
+        font-size: 0.95rem;
+    }
+
+    .gamify-quest-item__desc {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-quest-item {
+        padding: 0.5rem;
+    }
+
+    .gamify-quest-item__title {
+        font-size: 0.85rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .gamify-quest-item__desc {
+        font-size: 0.75rem;
+    }
+
+    .gamify-quest-item__rewards {
+        gap: 0.3rem;
+    }
+}

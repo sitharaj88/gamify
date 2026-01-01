@@ -1,0 +1,165 @@
+.gamify-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--gamify-font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: none;
+    cursor: pointer;
+    transition: var(--gamify-transition);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    background-color: transparent;
+    color: var(--gamify-text-primary);
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Base Variants */
+.gamify-btn--primary {
+    background-color: var(--gamify-neon-cyan);
+    color: var(--gamify-text-on-primary);
+}
+
+.gamify-btn--primary:hover {
+    box-shadow: var(--gamify-glow-primary);
+    transform: translateY(-2px);
+}
+
+[data-theme='light'] .gamify-btn--primary:hover {
+    filter: brightness(1.1);
+}
+
+.gamify-btn--danger {
+    background-color: var(--gamify-neon-pink);
+    color: white;
+}
+
+.gamify-btn--danger:hover {
+    box-shadow: var(--gamify-glow-danger);
+    transform: translateY(-2px);
+}
+
+.gamify-btn--outline {
+    background-color: transparent;
+    border: 2px solid var(--gamify-neon-cyan);
+    color: var(--gamify-neon-cyan);
+    box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+[data-theme='light'] .gamify-btn--outline {
+    box-shadow: none;
+    border-width: 2px;
+}
+
+.gamify-btn--outline:hover {
+    background-color: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 15px var(--gamify-neon-cyan);
+}
+
+[data-theme='light'] .gamify-btn--outline:hover {
+    background-color: rgba(8, 145, 178, 0.1);
+    box-shadow: 0 0 10px rgba(8, 145, 178, 0.3);
+}
+
+.gamify-btn--ghost {
+    background-color: rgba(127, 127, 127, 0.1);
+    color: var(--gamify-text-secondary);
+}
+
+[data-theme='light'] .gamify-btn--ghost {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.gamify-btn--ghost:hover {
+    background-color: rgba(127, 127, 127, 0.2);
+    color: var(--gamify-text-primary);
+}
+
+[data-theme='light'] .gamify-btn--ghost:hover {
+    background-color: rgba(99, 102, 241, 0.2);
+}
+
+.gamify-btn--legendary {
+    background: linear-gradient(135deg, var(--gamify-rank-legendary), #ffcc00);
+    color: #000;
+    box-shadow: 0 0 15px var(--gamify-rank-legendary);
+}
+
+[data-theme='light'] .gamify-btn--legendary {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.gamify-btn--legendary:hover {
+    box-shadow: 0 0 25px var(--gamify-rank-legendary);
+    filter: brightness(1.2);
+}
+
+/* Sizes */
+.gamify-btn--sm {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+}
+
+.gamify-btn--lg {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+}
+
+/* Active State */
+.gamify-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Shine Effect on Hover */
+.gamify-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.gamify-btn:hover::before {
+    left: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-btn {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .gamify-btn--sm {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.7rem;
+    }
+
+    .gamify-btn--lg {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    .gamify-btn--lg {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

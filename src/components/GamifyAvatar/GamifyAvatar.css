@@ -1,0 +1,149 @@
+.gamify-avatar {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 2px;
+    /* Space for border */
+    background: transparent;
+}
+
+.gamify-avatar__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Sizes */
+.gamify-avatar--sm {
+    width: 32px;
+    height: 32px;
+}
+
+.gamify-avatar--md {
+    width: 48px;
+    height: 48px;
+}
+
+.gamify-avatar--lg {
+    width: 64px;
+    height: 64px;
+}
+
+.gamify-avatar--xl {
+    width: 96px;
+    height: 96px;
+}
+
+/* Rank Borders */
+.gamify-avatar--common {
+    background: var(--gamify-rank-common);
+}
+
+.gamify-avatar--uncommon {
+    background: var(--gamify-rank-uncommon);
+}
+
+.gamify-avatar--rare {
+    background: linear-gradient(135deg, var(--gamify-rank-rare), #00d2ff);
+}
+
+.gamify-avatar--epic {
+    background: linear-gradient(135deg, var(--gamify-rank-epic), #ff00ea);
+}
+
+.gamify-avatar--legendary {
+    background: linear-gradient(135deg, var(--gamify-rank-legendary), #ffdd00);
+    box-shadow: 0 0 10px var(--gamify-rank-legendary);
+}
+
+.gamify-avatar--mythic {
+    background: linear-gradient(135deg, var(--gamify-rank-mythic), #ff0000);
+    box-shadow: 0 0 15px var(--gamify-rank-mythic);
+    animation: pulseMythic 2s infinite;
+}
+
+@keyframes pulseMythic {
+    0% {
+        box-shadow: 0 0 15px var(--gamify-rank-mythic);
+    }
+
+    50% {
+        box-shadow: 0 0 25px var(--gamify-rank-mythic), inset 0 0 10px var(--gamify-rank-mythic);
+    }
+
+    100% {
+        box-shadow: 0 0 15px var(--gamify-rank-mythic);
+    }
+}
+
+/* Status Indicator */
+.gamify-avatar__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    border: 2px solid var(--gamify-bg-dark);
+}
+
+.gamify-avatar__status--online {
+    background-color: var(--gamify-neon-green);
+    box-shadow: 0 0 5px var(--gamify-neon-green);
+}
+
+.gamify-avatar__status--offline {
+    background-color: var(--gamify-text-muted);
+}
+
+.gamify-avatar__status--start {
+    background-color: var(--gamify-neon-yellow);
+    box-shadow: 0 0 5px var(--gamify-neon-yellow);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-avatar--sm {
+        width: 28px;
+        height: 28px;
+    }
+
+    .gamify-avatar--md {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gamify-avatar--lg {
+        width: 52px;
+        height: 52px;
+    }
+
+    .gamify-avatar--xl {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-avatar--sm {
+        width: 24px;
+        height: 24px;
+    }
+
+    .gamify-avatar--md {
+        width: 36px;
+        height: 36px;
+    }
+
+    .gamify-avatar--lg {
+        width: 44px;
+        height: 44px;
+    }
+
+    .gamify-avatar--xl {
+        width: 60px;
+        height: 60px;
+    }
+}

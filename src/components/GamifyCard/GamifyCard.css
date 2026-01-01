@@ -1,0 +1,155 @@
+.gamify-card {
+    position: relative;
+    background: var(--gamify-bg-glass);
+    backdrop-filter: var(--gamify-glass-backdrop);
+    border: var(--gamify-glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--gamify-transition);
+    overflow: hidden;
+    color: var(--gamify-text-secondary);
+}
+
+/* Holographic Border Effect - Dark Mode */
+.gamify-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Light Mode - Gradient overlay for depth */
+[data-theme='light'] .gamify-card::before {
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.08), rgba(162, 28, 175, 0.04));
+}
+
+/* Hover Lift & Glow */
+.gamify-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(0, 243, 255, 0.1);
+    border-color: rgba(0, 243, 255, 0.3);
+}
+
+/* Light Mode Hover - Purple glow */
+[data-theme='light'] .gamify-card:hover {
+    box-shadow:
+        0 20px 40px -15px rgba(99, 102, 241, 0.25),
+        0 0 20px rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Variants */
+.gamify-card--cyber {
+    clip-path: polygon(20px 0, 100% 0,
+            100% calc(100% - 20px), calc(100% - 20px) 100%,
+            0 100%, 0 20px);
+    border-radius: 0;
+    border: 1px solid var(--gamify-neon-cyan);
+    background: var(--gamify-bg-cyber);
+}
+
+[data-theme='light'] .gamify-card--cyber {
+    border: 2px solid #0891b2;
+    /* Visible teal border */
+    background: linear-gradient(135deg, #f0fdfa, #ecfeff);
+}
+
+.gamify-card--cyber::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--gamify-neon-cyan);
+}
+
+.gamify-card--neon {
+    border: 1px solid var(--gamify-neon-pink);
+    box-shadow: 0 0 10px rgba(188, 19, 254, 0.1);
+}
+
+[data-theme='light'] .gamify-card--neon {
+    border: 2px solid #a21caf;
+    background: linear-gradient(135deg, #fdf4ff, #fae8ff);
+}
+
+.gamify-card--neon:hover {
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.3);
+}
+
+.gamify-card__header {
+    font-family: var(--gamify-font-heading);
+    color: var(--gamify-text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+[data-theme='light'] .gamify-card__header {
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.gamify-card__content {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.gamify-card__footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-card {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .gamify-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .gamify-card__header {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .gamify-card__content {
+        font-size: 0.9rem;
+    }
+
+    .gamify-card__footer {
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-card {
+        padding: 0.75rem;
+    }
+
+    .gamify-card__header {
+        font-size: 0.9rem;
+    }
+
+    .gamify-card__content {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+}

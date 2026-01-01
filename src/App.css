@@ -1,0 +1,772 @@
+/* =========================================
+   Showcase App - Modern Game Website Theme
+   ========================================= */
+
+/* Background Animation - Dark Mode (Cyberpunk Neon) */
+body {
+  background: #0a0a14;
+  background-image:
+    /* Neon glow from top */
+    radial-gradient(ellipse 100% 60% at 50% -10%, rgba(139, 92, 246, 0.35), transparent 50%),
+    /* Pink/magenta glow bottom right */
+    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(236, 72, 153, 0.25), transparent 40%),
+    /* Cyan glow bottom left */
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(6, 182, 212, 0.25), transparent 40%),
+    /* Center ambient */
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(99, 102, 241, 0.1), transparent 50%),
+    /* Subtle grid overlay */
+    repeating-linear-gradient(90deg,
+      rgba(139, 92, 246, 0.03) 0px,
+      rgba(139, 92, 246, 0.03) 1px,
+      transparent 1px,
+      transparent 80px),
+    repeating-linear-gradient(0deg,
+      rgba(236, 72, 153, 0.03) 0px,
+      rgba(236, 72, 153, 0.03) 1px,
+      transparent 1px,
+      transparent 80px),
+    /* Base dark gradient */
+    linear-gradient(160deg,
+      #0a0a14 0%,
+      #0f0a1a 30%,
+      #140c22 50%,
+      #0f0a1a 70%,
+      #0a0a14 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Light mode - Holographic Gaming Theme */
+[data-theme='light'] body {
+  background: #f0f4ff;
+  background-image:
+    /* Top glow - purple */
+    radial-gradient(ellipse 100% 50% at 50% -10%, rgba(139, 92, 246, 0.2), transparent 45%),
+    /* Bottom right - pink accent */
+    radial-gradient(ellipse 50% 40% at 85% 90%, rgba(236, 72, 153, 0.15), transparent 35%),
+    /* Bottom left - cyan accent */
+    radial-gradient(ellipse 50% 40% at 15% 85%, rgba(6, 182, 212, 0.15), transparent 35%),
+    /* Subtle grid */
+    repeating-linear-gradient(90deg,
+      rgba(99, 102, 241, 0.04) 0px,
+      rgba(99, 102, 241, 0.04) 1px,
+      transparent 1px,
+      transparent 100px),
+    repeating-linear-gradient(0deg,
+      rgba(139, 92, 246, 0.04) 0px,
+      rgba(139, 92, 246, 0.04) 1px,
+      transparent 1px,
+      transparent 100px),
+    /* Base light gradient - soft blue/purple tones */
+    linear-gradient(160deg,
+      #f8faff 0%,
+      #f0f4ff 25%,
+      #ede9fe 50%,
+      #f0f4ff 75%,
+      #f8faff 100%);
+}
+
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+.gamify-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(5, 5, 16, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Light mode nav */
+[data-theme='light'] .gamify-nav {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.12);
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.08);
+}
+
+.gamify-nav__logo {
+  font-family: var(--gamify-font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 10px var(--gamify-neon-cyan);
+  letter-spacing: 2px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+/* Light mode logo */
+[data-theme='light'] .gamify-nav__logo {
+  color: #1e1b4b;
+  text-shadow: none;
+  background: linear-gradient(135deg, #4338ca, #a21caf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gamify-nav__links {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.gamify-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1rem;
+}
+
+.gamify-nav__sys-btn {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--gamify-neon-cyan);
+  font-family: var(--gamify-font-heading);
+  font-size: 0.7rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gamify-nav__sys-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+}
+
+/* Mobile Toggle Button */
+.gamify-nav__mobile-toggle {
+  display: none;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--gamify-text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin-left: auto;
+  z-index: 101;
+  transition: all 0.2s;
+}
+
+.gamify-nav__mobile-toggle:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+[data-theme='light'] .gamify-nav__mobile-toggle {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+/* Mobile Menu Overlay */
+.gamify-mobile-menu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: var(--gamify-bg-dark);
+  backdrop-filter: blur(20px);
+  z-index: 99;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.3s ease-out;
+  overflow-y: auto;
+}
+
+[data-theme='light'] .gamify-mobile-menu {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.gamify-mobile-menu__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gamify-mobile-menu__link {
+  font-family: var(--gamify-font-heading);
+  font-size: 1.1rem;
+  color: var(--gamify-text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.gamify-mobile-menu__link--active,
+.gamify-mobile-menu__link:hover {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--gamify-neon-cyan);
+}
+
+.gamify-nav__link {
+  color: var(--gamify-text-secondary);
+  font-family: var(--gamify-font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* Light mode nav links */
+[data-theme='light'] .gamify-nav__link {
+  color: #4338ca;
+  font-weight: 600;
+}
+
+.gamify-nav__link:hover {
+  color: var(--gamify-neon-cyan);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.gamify-nav__link--active {
+  color: var(--gamify-neon-cyan);
+  background: rgba(6, 182, 212, 0.15);
+}
+
+/* Light mode hover/active */
+[data-theme='light'] .gamify-nav__link:hover {
+  color: #7c3aed;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme='light'] .gamify-nav__link--active {
+  color: #4338ca;
+  text-shadow: none;
+  border-bottom-color: #a21caf;
+  /* Fuchsia accent */
+  font-weight: 700;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.gamify-hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.gamify-hero__title {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, #fff, #a0a0c0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.3));
+}
+
+/* Light mode hero title */
+[data-theme='light'] .gamify-hero__title {
+  background: linear-gradient(135deg, #1e1b4b, #4338ca, #a21caf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: none;
+}
+
+.gamify-hero__subtitle {
+  font-size: 1.5rem;
+  color: var(--gamify-neon-pink);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+}
+
+[data-theme='light'] .gamify-hero__subtitle {
+  color: #a21caf;
+  text-shadow: none;
+}
+
+/* =========================================
+   DASHBOARD GRID
+   ========================================= */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  padding: 0 2rem 4rem 2rem;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 100px;
+  /* Offset for nav */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Section Styling */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+[data-theme='light'] .section-header {
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.section-title {
+  font-family: var(--gamify-font-heading);
+  font-size: 1.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+[data-theme='light'] .section-title {
+  color: #1e1b4b;
+}
+
+.section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: var(--gamify-neon-cyan);
+  box-shadow: 0 0 10px var(--gamify-neon-cyan);
+}
+
+[data-theme='light'] .section-title::before {
+  background: linear-gradient(180deg, #4338ca, #a21caf);
+  box-shadow: none;
+}
+
+/* Grid Layouts for Content */
+.showcase-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.inventory-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+[data-theme='light'] .inventory-showcase {
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .hover-scale:hover {
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+}
+
+/* =========================================
+   GLOBAL ANIMATIONS
+   ========================================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--gamify-neon-cyan), 0 0 10px var(--gamify-neon-cyan);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--gamify-neon-cyan), 0 0 30px var(--gamify-neon-cyan);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* =========================================
+   SCROLLBAR STYLING
+   ========================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gamify-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gamify-neon-cyan), var(--gamify-neon-pink));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gamify-neon-pink), var(--gamify-neon-cyan));
+}
+
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #f0f8ff;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4338ca, #a21caf);
+}
+
+/* =========================================
+   SELECTION STYLING
+   ========================================= */
+::selection {
+  background: rgba(99, 102, 241, 0.4);
+  color: white;
+}
+
+[data-theme='light'] ::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #1e1b4b;
+}
+
+/* =========================================
+   FOCUS STATES
+   ========================================= */
+*:focus-visible {
+  outline: 2px solid var(--gamify-neon-cyan);
+  outline-offset: 2px;
+}
+
+[data-theme='light'] *:focus-visible {
+  outline-color: #4338ca;
+}
+
+/* =========================================
+   RESPONSIVE UTILITIES
+   ========================================= */
+@media (max-width: 768px) {
+  .gamify-nav__links--desktop {
+    display: none;
+  }
+
+  .gamify-nav__mobile-toggle {
+    display: block;
+  }
+
+  .gamify-nav__actions {
+    display: none;
+  }
+
+  .gamify-nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .gamify-nav__logo {
+    font-size: 1.4rem;
+  }
+
+  .gamify-hero__title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  /* Pages - reduce padding */
+  .gamify-main {
+    padding: 0;
+  }
+
+  .gamify-footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .gamify-footer__content {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .gamify-footer__links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    text-align: left;
+  }
+
+  .gamify-footer__column {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .gamify-nav {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+    /* Ensure logo pushes others to right if needed, but margin-left: auto on child handles it */
+  }
+
+  .gamify-nav__logo {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-right: auto;
+    /* Explicitly ensure logo stays left if flex behavior varies */
+  }
+
+  /* Ensure toggle is right aligned */
+  .gamify-nav__mobile-toggle {
+    margin-left: 0;
+    /* reset if logo pushes */
+  }
+
+  .gamify-mobile-menu {
+    padding: 0.75rem;
+    top: 48px;
+    height: calc(100vh - 48px);
+  }
+
+  .gamify-mobile-menu__link {
+    font-size: 1rem;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .gamify-footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .gamify-footer__links {
+    /* Keep grid on small screens, maybe stack if very small but 2 cols is usually fine */
+    gap: 1.5rem 0.5rem;
+  }
+
+  /* Make sure the Connect column spans full width if it has many icons */
+  .gamify-footer__column:last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .gamify-footer__brand {
+    font-size: 0.9rem;
+  }
+
+  .gamify-footer__logo {
+    font-size: 1.2rem;
+  }
+
+  .gamify-footer__tagline {
+    font-size: 0.8rem;
+  }
+
+  .gamify-footer__column h4 {
+    font-size: 0.85rem;
+  }
+
+  .gamify-footer__column a {
+    font-size: 0.8rem;
+  }
+
+  .gamify-footer__bottom {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .gamify-footer__badges {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gamify-nav {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .gamify-nav__logo {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .gamify-mobile-menu {
+    padding: 0.75rem;
+    top: 48px;
+    height: calc(100vh - 48px);
+  }
+
+  .gamify-mobile-menu__link {
+    font-size: 1rem;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .gamify-footer {
+    padding: 1rem 0.75rem;
+  }
+
+  .gamify-footer__brand {
+    font-size: 0.9rem;
+  }
+
+  .gamify-footer__logo {
+    font-size: 1.2rem;
+  }
+
+  .gamify-footer__tagline {
+    font-size: 0.8rem;
+  }
+
+  .gamify-footer__column h4 {
+    font-size: 0.85rem;
+  }
+
+  .gamify-footer__column a {
+    font-size: 0.8rem;
+  }
+
+  .gamify-footer__bottom {
+    font-size: 0.75rem;
+  }
+}

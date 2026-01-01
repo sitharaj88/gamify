@@ -1,0 +1,94 @@
+.gamify-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.gamify-label {
+    font-family: var(--gamify-font-body);
+    color: var(--gamify-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.gamify-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-family: var(--gamify-font-body);
+    font-size: 1rem;
+    color: var(--gamify-text-primary);
+    background: var(--gamify-bg-input);
+    /* CHANGED: Uses semantic variable */
+    border: var(--gamify-glass-border);
+    /* CHANGED: Uses semantic variable */
+    border-radius: 4px;
+    /* Slightly rounded */
+    outline: none;
+    transition: var(--gamify-transition);
+
+    /* Cyberpunk cut corner */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            0 100%);
+}
+
+.gamify-input::placeholder {
+    color: var(--gamify-text-muted);
+}
+
+.gamify-input:focus {
+    border-color: var(--gamify-neon-cyan);
+    background: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+.gamify-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.gamify-input--error {
+    border-color: var(--gamify-neon-pink);
+}
+
+.gamify-input--error:focus {
+    box-shadow: 0 0 10px rgba(188, 19, 254, 0.1);
+}
+
+.gamify-error-message {
+    color: var(--gamify-neon-pink);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .gamify-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-input {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .gamify-label {
+        font-size: 0.75rem;
+    }
+
+    .gamify-error-message {
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,119 @@
+.gamify-leaderboard {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--gamify-font-body);
+}
+
+.gamify-leaderboard th,
+.gamify-leaderboard td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gamify-leaderboard th {
+    font-family: var(--gamify-font-heading);
+    color: var(--gamify-text-secondary);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.gamify-leaderboard tbody tr {
+    transition: var(--gamify-transition);
+}
+
+.gamify-leaderboard tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.gamify-leaderboard__rank {
+    font-weight: 700;
+    width: 50px;
+    text-align: center;
+}
+
+/* Rank Colors */
+.gamify-leaderboard-row--1 .gamify-leaderboard__rank {
+    color: #ffd700;
+    /* Gold */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    font-size: 1.2rem;
+}
+
+.gamify-leaderboard-row--2 .gamify-leaderboard__rank {
+    color: #c0c0c0;
+    /* Silver */
+    text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    font-size: 1.1rem;
+}
+
+.gamify-leaderboard-row--3 .gamify-leaderboard__rank {
+    color: #cd7f32;
+    /* Bronze */
+    text-shadow: 0 0 10px rgba(205, 127, 50, 0.5);
+    font-size: 1.1rem;
+}
+
+.gamify-leaderboard-row--1 {
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.gamify-leaderboard__player {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: white;
+    font-weight: 700;
+}
+
+.gamify-leaderboard__score {
+    text-align: right;
+    font-family: var(--gamify-font-heading);
+    color: var(--gamify-neon-cyan);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+    .gamify-leaderboard th,
+    .gamify-leaderboard td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .gamify-leaderboard th {
+        font-size: 0.7rem;
+    }
+
+    .gamify-leaderboard__rank {
+        width: 35px;
+    }
+
+    .gamify-leaderboard__player {
+        gap: 0.5rem;
+    }
+
+    .gamify-leaderboard__score {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .gamify-leaderboard th,
+    .gamify-leaderboard td {
+        padding: 0.5rem 0.4rem;
+        font-size: 0.75rem;
+    }
+
+    .gamify-leaderboard__rank {
+        width: 30px;
+        font-size: 0.9rem;
+    }
+
+    .gamify-leaderboard-row--1 .gamify-leaderboard__rank,
+    .gamify-leaderboard-row--2 .gamify-leaderboard__rank,
+    .gamify-leaderboard-row--3 .gamify-leaderboard__rank {
+        font-size: 0.95rem;
+    }
+}

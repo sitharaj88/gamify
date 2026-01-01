@@ -1,0 +1,118 @@
+.gamify-tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+[data-theme='light'] .gamify-tabs {
+    border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+.gamify-tab {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--gamify-text-secondary);
+    font-family: var(--gamify-font-heading);
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.gamify-tab:hover {
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme='light'] .gamify-tab:hover {
+    color: var(--gamify-text-primary);
+    text-shadow: none;
+    background-color: rgba(99, 102, 241, 0.1);
+    border-radius: 6px;
+}
+
+.gamify-tab--active {
+    color: var(--gamify-neon-cyan);
+    text-shadow: 0 0 10px var(--gamify-neon-cyan);
+}
+
+[data-theme='light'] .gamify-tab--active {
+    color: #4338ca;
+    /* Indigo 600 */
+    text-shadow: none;
+    font-weight: 700;
+}
+
+.gamify-tab--active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gamify-neon-cyan);
+    box-shadow: 0 0 10px var(--gamify-neon-cyan);
+    animation: glowExpand 0.3s ease-out;
+}
+
+[data-theme='light'] .gamify-tab--active::after {
+    background: linear-gradient(90deg, #4338ca, #a21caf);
+    box-shadow: 0 0 8px rgba(67, 56, 202, 0.5);
+    height: 3px;
+    bottom: -3px;
+}
+
+@keyframes glowExpand {
+    from {
+        width: 0%;
+        left: 50%;
+    }
+
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-tabs {
+        gap: 0.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 4px;
+        margin-bottom: 1rem;
+        flex-wrap: nowrap;
+    }
+
+    .gamify-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .gamify-tab {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-tabs {
+        gap: 0.25rem;
+    }
+
+    .gamify-tab {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.3px;
+    }
+}

@@ -1,0 +1,86 @@
+.gamify-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    /* Slightly boxy like tech tags */
+    font-family: var(--gamify-font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+    border: 1px solid transparent;
+    width: fit-content;
+}
+
+/* Variants using CSS Variables */
+.gamify-badge--common {
+    border-color: var(--gamify-rank-common);
+    color: var(--gamify-rank-common);
+    background: rgba(176, 176, 176, 0.1);
+}
+
+.gamify-badge--uncommon {
+    border-color: var(--gamify-rank-uncommon);
+    color: var(--gamify-rank-uncommon);
+    background: rgba(30, 255, 0, 0.1);
+}
+
+.gamify-badge--rare {
+    border-color: var(--gamify-rank-rare);
+    color: var(--gamify-rank-rare);
+    background: rgba(0, 112, 221, 0.1);
+}
+
+.gamify-badge--epic {
+    border-color: var(--gamify-rank-epic);
+    color: var(--gamify-rank-epic);
+    background: rgba(163, 53, 238, 0.1);
+    box-shadow: 0 0 5px rgba(163, 53, 238, 0.2);
+}
+
+.gamify-badge--legendary {
+    border-color: var(--gamify-rank-legendary);
+    color: var(--gamify-rank-legendary);
+    background: rgba(255, 128, 0, 0.1);
+    box-shadow: 0 0 8px rgba(255, 128, 0, 0.3);
+}
+
+.gamify-badge--mythic {
+    border-color: var(--gamify-rank-mythic);
+    color: var(--gamify-rank-mythic);
+    background: rgba(255, 0, 0, 0.1);
+    animation: mythicPulse 2s infinite;
+}
+
+@keyframes mythicPulse {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-badge {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-badge {
+        padding: 0.15rem 0.4rem;
+        font-size: 0.6rem;
+    }
+}

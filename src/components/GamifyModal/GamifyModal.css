@@ -1,0 +1,174 @@
+.gamify-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.gamify-modal {
+    background: var(--gamify-bg-panel);
+    border: 1px solid var(--gamify-neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    min-width: 400px;
+    max-width: 90%;
+    position: relative;
+    overflow: hidden;
+    animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gamify-modal--alert {
+    border-color: var(--gamify-neon-pink);
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+}
+
+.gamify-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.gamify-modal--default {
+    color: var(--gamify-neon-cyan);
+}
+
+.gamify-modal--alert {
+    color: var(--gamify-neon-pink);
+}
+
+.gamify-modal__header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.gamify-modal__title {
+    font-family: var(--gamify-font-heading);
+    font-size: 1.25rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.gamify-modal__close {
+    background: none;
+    border: none;
+    color: var(--gamify-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.gamify-modal__close:hover {
+    color: white;
+}
+
+.gamify-modal__content {
+    padding: 1.5rem;
+    color: var(--gamify-text-secondary);
+    font-family: var(--gamify-font-body);
+    font-size: 1rem;
+}
+
+.gamify-modal__footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-modal {
+        min-width: auto;
+        width: 90%;
+        max-width: 400px;
+        margin: 1rem;
+    }
+
+    .gamify-modal__header {
+        padding: 0.75rem 1rem;
+    }
+
+    .gamify-modal__title {
+        font-size: 1.1rem;
+    }
+
+    .gamify-modal__content {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .gamify-modal__footer {
+        padding: 0.75rem 1rem;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-modal {
+        width: 95%;
+        margin: 0.5rem;
+    }
+
+    .gamify-modal__header {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .gamify-modal__title {
+        font-size: 1rem;
+    }
+
+    .gamify-modal__content {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .gamify-modal__footer {
+        padding: 0.6rem 0.75rem;
+        flex-direction: column;
+    }
+
+    .gamify-modal__close {
+        font-size: 1.25rem;
+    }
+}

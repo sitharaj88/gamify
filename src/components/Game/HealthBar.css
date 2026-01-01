@@ -1,0 +1,100 @@
+.gamify-health-bar {
+    width: 100%;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: var(--gamify-glass-border);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Light mode specific */
+[data-theme='light'] .gamify-health-bar {
+    background-color: rgba(30, 27, 75, 0.15);
+    /* Indigo tint */
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gamify-health-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff0000, #ff5e00);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border-radius: 12px 0 0 12px;
+}
+
+/* Add a shimmer effect */
+.gamify-health-bar__fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.gamify-health-bar__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: var(--gamify-font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-shadow: 0 0 2px black;
+    z-index: 1;
+}
+
+/* Variants */
+.gamify-health-bar--mana .gamify-health-bar__fill {
+    background: linear-gradient(90deg, #0040ff, #00d2ff);
+}
+
+.gamify-health-bar--xp .gamify-health-bar__fill {
+    background: linear-gradient(90deg, #9900ff, #ff00ea);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gamify-health-bar {
+        height: 20px;
+    }
+
+    .gamify-health-bar__text {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gamify-health-bar {
+        height: 16px;
+        border-radius: 8px;
+    }
+
+    .gamify-health-bar__fill {
+        border-radius: 8px 0 0 8px;
+    }
+
+    .gamify-health-bar__text {
+        font-size: 0.6rem;
+    }
+}

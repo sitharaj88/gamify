@@ -1,0 +1,27 @@
+.gamify-theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--gamify-text-secondary);
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gamify-theme-toggle:hover {
+    color: var(--gamify-neon-yellow);
+    filter: drop-shadow(0 0 5px var(--gamify-neon-yellow));
+}
+
+.gamify-theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.gamify-theme-toggle:active svg {
+    transform: rotate(90deg) scale(0.8);
+}

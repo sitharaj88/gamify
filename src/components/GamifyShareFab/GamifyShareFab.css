@@ -1,0 +1,68 @@
+.gamify-share-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gamify-bg-popover);
+    border: 2px solid var(--gamify-neon-cyan);
+    color: var(--gamify-neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    /* Above most things */
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4),
+        inset 0 0 10px rgba(6, 182, 212, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.gamify-share-fab:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.6),
+        inset 0 0 15px rgba(6, 182, 212, 0.2);
+    background: rgba(6, 182, 212, 0.1);
+}
+
+.gamify-share-fab:active {
+    transform: scale(0.95);
+}
+
+.gamify-share-fab__icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+/* Pulsing effect */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(6, 182, 212, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+    }
+}
+
+.gamify-share-fab {
+    animation: pulse-glow 3s infinite;
+}
+
+/* Move up on mobile if needed to avoid bottom tabs or similar (we don't have bottom tabs) */
+@media (max-width: 480px) {
+    .gamify-share-fab {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+    }
+}

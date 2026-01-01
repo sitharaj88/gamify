@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap');
+
+:root {
+  /* =========================================
+     COLOR PALETTE - GAMING THEME (DARK MODE)
+     ========================================= */
+
+  /* Primary Neon Colors */
+  --gamify-neon-cyan: #00f3ff;
+  --gamify-neon-pink: #bc13fe;
+  --gamify-neon-green: #0aff0a;
+  --gamify-neon-yellow: #faff00;
+
+  /* Backgrounds (Dark Mode Default) */
+  --gamify-bg-dark: #050510;
+  --gamify-bg-panel: #0f0f29;
+  --gamify-bg-glass: rgba(15, 15, 41, 0.7);
+  --gamify-bg-cyber: rgba(15, 15, 41, 0.85);
+  --gamify-bg-input: rgba(0, 0, 0, 0.3);
+
+  /* Text Colors (Dark Mode Default) */
+  --gamify-text-primary: #ffffff;
+  --gamify-text-secondary: #a0a0c0;
+  --gamify-text-muted: #505070;
+  --gamify-text-on-primary: #050510;
+
+  /* Rarity Colors */
+  --gamify-rank-common: #b0b0b0;
+  --gamify-rank-uncommon: #1eff00;
+  --gamify-rank-rare: #0070dd;
+  --gamify-rank-epic: #a335ee;
+  --gamify-rank-legendary: #ff8000;
+  --gamify-rank-mythic: #ff0000;
+
+  /* =========================================
+     TYPOGRAPHY
+     ========================================= */
+  --gamify-font-heading: 'Orbitron', sans-serif;
+  --gamify-font-body: 'Rajdhani', sans-serif;
+
+  /* =========================================
+     EFFECTS
+     ========================================= */
+  --gamify-glow-primary: 0 0 10px var(--gamify-neon-cyan), 0 0 20px rgba(0, 243, 255, 0.3);
+  --gamify-glow-danger: 0 0 10px var(--gamify-neon-pink), 0 0 20px rgba(188, 19, 254, 0.3);
+
+  --gamify-glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --gamify-glass-backdrop: blur(12px);
+
+  --gamify-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --gamify-body-gradient:
+    /* Neon glow from top */
+    radial-gradient(ellipse 100% 60% at 50% -10%, rgba(139, 92, 246, 0.35), transparent 50%),
+    /* Pink/magenta glow bottom right */
+    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(236, 72, 153, 0.25), transparent 40%),
+    /* Cyan glow bottom left */
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(6, 182, 212, 0.25), transparent 40%),
+    /* Center ambient */
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(99, 102, 241, 0.1), transparent 50%),
+    /* Subtle grid overlay */
+    repeating-linear-gradient(90deg,
+      rgba(139, 92, 246, 0.03) 0px,
+      rgba(139, 92, 246, 0.03) 1px,
+      transparent 1px,
+      transparent 80px),
+    repeating-linear-gradient(0deg,
+      rgba(236, 72, 153, 0.03) 0px,
+      rgba(236, 72, 153, 0.03) 1px,
+      transparent 1px,
+      transparent 80px),
+    /* Base dark gradient */
+    linear-gradient(160deg, #0a0a14 0%, #0f0a1a 30%, #140c22 50%, #0f0a1a 70%, #0a0a14 100%);
+}
+
+/* =========================================
+   LIGHT MODE - "HOLOGRAPHIC DAY" THEME
+   ========================================= */
+[data-theme='light'] {
+  /* ... (colors preserved from original) ... */
+
+  /* Primary Neon - Darkened for visibility on white */
+  --gamify-neon-cyan: #0891b2;
+  --gamify-neon-pink: #a21caf;
+  --gamify-neon-green: #059669;
+  --gamify-neon-yellow: #ca8a04;
+
+  /* Backgrounds */
+  --gamify-bg-dark: #f0f4ff;
+  --gamify-bg-panel: #ffffff;
+  --gamify-bg-glass: rgba(255, 255, 255, 0.9);
+  --gamify-bg-cyber: #f0fdfa;
+  --gamify-bg-input: #ffffff;
+
+  /* Text */
+  --gamify-text-primary: #1e1b4b;
+  --gamify-text-secondary: #4338ca;
+  --gamify-text-muted: #6366f1;
+  --gamify-text-on-primary: #ffffff;
+
+  /* Rarity Colors */
+  --gamify-rank-common: #475569;
+  --gamify-rank-uncommon: #059669;
+  --gamify-rank-rare: #2563eb;
+  --gamify-rank-epic: #9333ea;
+  --gamify-rank-legendary: #ea580c;
+  --gamify-rank-mythic: #dc2626;
+
+  /* Effects */
+  --gamify-glass-border: 1px solid rgba(99, 102, 241, 0.25);
+  --gamify-glow-primary: 0 0 12px rgba(8, 145, 178, 0.5);
+  --gamify-glow-danger: 0 0 12px rgba(162, 28, 175, 0.5);
+
+  /* Vibrant gradient background */
+  --gamify-body-gradient:
+    /* Top glow - purple */
+    radial-gradient(ellipse 100% 50% at 50% -10%, rgba(139, 92, 246, 0.2), transparent 45%),
+    /* Bottom right - pink accent */
+    radial-gradient(ellipse 50% 40% at 85% 90%, rgba(236, 72, 153, 0.15), transparent 35%),
+    /* Bottom left - cyan accent */
+    radial-gradient(ellipse 50% 40% at 15% 85%, rgba(6, 182, 212, 0.15), transparent 35%),
+    /* Subtle grid */
+    repeating-linear-gradient(90deg, rgba(99, 102, 241, 0.04) 0px, rgba(99, 102, 241, 0.04) 1px, transparent 1px, transparent 100px),
+    repeating-linear-gradient(0deg, rgba(139, 92, 246, 0.04) 0px, rgba(139, 92, 246, 0.04) 1px, transparent 1px, transparent 100px),
+    /* Base light gradient - soft blue/purple tones */
+    linear-gradient(160deg, #f8faff 0%, #f0f4ff 25%, #ede9fe 50%, #f0f4ff 75%, #f8faff 100%);
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--gamify-font-body);
+  background-color: var(--gamify-bg-dark);
+  color: var(--gamify-text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image: var(--gamify-body-gradient);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--gamify-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Utilities */
+.gamify-glass {
+  background: var(--gamify-bg-glass);
+  backdrop-filter: var(--gamify-glass-backdrop);
+  border: var(--gamify-glass-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Light mode: add colored shadow for depth */
+[data-theme='light'] .gamify-glass {
+  box-shadow:
+    0 10px 25px -5px rgba(99, 102, 241, 0.1),
+    0 8px 10px -6px rgba(99, 102, 241, 0.05);
+}
+
+.gamify-glow-text {
+  text-shadow: 0 0 8px currentColor;
+}
+
+[data-theme='light'] .gamify-glow-text {
+  text-shadow: none;
+  /* Cleaner in light mode */
+  font-weight: 700;
+}
